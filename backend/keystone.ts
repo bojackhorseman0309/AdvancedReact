@@ -1,15 +1,17 @@
 import 'dotenv/config';
 import { createAuth } from '@keystone-next/auth';
 import { config, createSchema } from '@keystone-next/keystone/schema';
-import { User } from './schemas/User';
-import { Product } from './schemas/Product';
-import { ProductImage } from './schemas/ProductImage';
 import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { User } from './schemas/User';
+import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
+import { CartItem } from './schemas/CartItem';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
+import { extendGraphqlSchema } from './mutations';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost:27017/sickfits';
@@ -50,14 +52,13 @@ export default withAuth(
         }
       },
     },
-    lists: createSchema({ User, Product, ProductImage }),
+    lists: createSchema({ User, Product, ProductImage, CartItem }),
+    extendGraphqlSchema,
     ui: {
-      isAccessAllowed: ({ session }) => {
-        return !!session?.data;
-      },
+      isAccessAllowed: ({ session }) => !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: `id`,
+      User: 'id name email',
     }),
   })
 );
