@@ -13,6 +13,7 @@ import * as view30384bc2 from '../../../node_modules/@keystone-next/fields/types
 import * as viewd723b0f9 from '../../../node_modules/@keystone-next/fields/types/integer/views';
 import * as view15644376 from '../../../node_modules/@keystone-next/cloudinary/views';
 import * as view648414b6 from '../../../node_modules/@keystone-next/fields/types/virtual/views';
+import * as view136e427a from '../../../node_modules/@keystone-next/fields/types/checkbox/views';
 
 const adminConfig = {};
 
@@ -26,6 +27,7 @@ const fieldViews = {
   viewd723b0f9,
   view15644376,
   view648414b6,
+  view136e427a,
 };
 
 const lazyMetadataQuery = {
@@ -200,7 +202,7 @@ export default function App({ Component, pageProps }) {
     <Core>
       <KeystoneProvider
         adminConfig={adminConfig}
-        adminMetaHash="6ms0so"
+        adminMetaHash="vysw7p"
         fieldViews={fieldViews}
         lazyMetadataQuery={lazyMetadataQuery}
       >
