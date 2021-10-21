@@ -33,9 +33,9 @@ const CREATE_PRODUCT_MUTATION = gql`
 const CreateProduct = () => {
   const { inputs, handleChange, clearForm, resetForm } = useForm({
     image: '',
-    name: 'Alonso',
-    price: 1234,
-    description: 'Hello',
+    name: '',
+    price: 0,
+    description: '',
   });
   const [createProduct, { loading, error, data }] = useMutation(
     CREATE_PRODUCT_MUTATION,
@@ -108,3 +108,5 @@ const CreateProduct = () => {
 };
 
 export default CreateProduct;
+
+export { CREATE_PRODUCT_MUTATION };

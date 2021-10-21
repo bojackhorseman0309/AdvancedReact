@@ -37,17 +37,18 @@ const ProductStyles = styled.div`
 
 const SingleProduct = ({ id }) => {
   const { data, loading, error } = useQuery(SINGLE_ITEM_QUERY, {
-    variables: { id: id },
+    variables: { id },
   });
   if (loading) {
     return <p>Loading...</p>;
   }
   if (error) {
-    <DisplayError error={error} />;
+    return <DisplayError error={error} />;
   }
+  console.log('data...', data);
   const { Product } = data;
   return (
-    <ProductStyles>
+    <ProductStyles data-testid='singleProduct'>
       <Head>
         <title>Sick fits | {Product.name}</title>
       </Head>
@@ -64,3 +65,4 @@ const SingleProduct = ({ id }) => {
 };
 
 export default SingleProduct;
+export { SINGLE_ITEM_QUERY };

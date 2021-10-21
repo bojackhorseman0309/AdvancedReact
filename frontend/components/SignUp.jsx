@@ -76,10 +76,11 @@ const SignUp = () => {
             onChange={handleChange}
           />
         </label>
-        <button type='submit'>Sign Up</button>
+        <button type='submit'>Sign Up!</button>
       </fieldset>
     </Form>
   );
 };
 
 export default SignUp;
+export { SIGNUP_MUTATION };
